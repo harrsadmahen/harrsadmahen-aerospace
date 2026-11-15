@@ -6,3 +6,33 @@
 @media(max-width:900px){.header-index{display:none}.site-header{gap:20px}.main-nav{gap:14px}.home-hero{min-height:unset;padding-block:75px;grid-template-columns:1fr}.hero-visual{height:390px}.home-strip{grid-template-columns:1fr}.home-strip>div+div{border-left:0;border-top:1px solid var(--line);padding:25px 0 0}.home-strip p{min-height:0}.contact-layout{gap:35px}.book-feature{grid-template-columns:190px 1fr}.book-index{min-height:290px}.book-mark{font-size:90px}}
 @media(max-width:680px){.site-header{height:70px;justify-content:space-between;padding-inline:6vw}.menu-toggle{display:block}.main-nav{display:none;position:absolute;top:70px;left:0;right:0;background:#08192a;padding:20px 6vw 25px;border-bottom:1px solid var(--line);flex-direction:column;gap:18px}.main-nav.open{display:flex}.main-nav a{font-size:12px}.page-shell{width:88vw}.home-hero{padding-block:62px 70px}h1{font-size:clamp(70px,18vw,112px)}.hero-visual{height:330px}.page-hero{padding-block:70px 45px}.page-hero h1{font-size:clamp(58px,15vw,88px)}.content-section{padding-block:55px}.three-grid,.skill-grid{grid-template-columns:1fr 1fr}.score-grid{justify-content:space-between;gap:12px}.score strong{font-size:38px}.list-card{grid-template-columns:82px 1fr;gap:15px}.timeline{padding-left:28px}.timeline-item{grid-template-columns:1fr;gap:5px;padding-bottom:28px}.timeline-item:before{left:-34px}.gallery-grid{grid-template-columns:1fr}.gallery-wide{grid-column:auto}.gallery-item img,.gallery-wide img,.vulcan-gallery .gallery-item img{height:300px}.apps-feature{grid-template-columns:1fr;padding:17px}.apps-feature img{max-height:280px}.project-heading{align-items:start;flex-direction:column}.book-feature{grid-template-columns:1fr}.book-index{min-height:260px;max-width:230px}.contact-layout{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.collab-panel{align-items:flex-start;flex-direction:column}.feature-meta{flex-direction:column}.site-footer{grid-template-columns:1fr}.footer-links{grid-row:2}.site-footer small{grid-row:3}.small-publication-note{align-items:flex-start;flex-direction:column;gap:12px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+
+/* Interactive aircraft-inspired name treatment */
+.name-wave{display:inline-flex;white-space:nowrap;cursor:default;isolation:isolate;padding-right:.035em}
+.name-wave>span{display:inline-block;transform-origin:50% 75%;transition:color .25s ease,-webkit-text-stroke-color .25s ease,text-shadow .25s ease}
+.name-wave:hover>span{color:var(--cyan);-webkit-text-stroke-color:var(--cyan);text-shadow:0 0 18px rgba(143,198,232,.38);animation:name-flight-wave .9s cubic-bezier(.2,.75,.25,1) both}
+.name-wave:hover>span:nth-child(1){animation-delay:0ms}
+.name-wave:hover>span:nth-child(2){animation-delay:65ms}
+.name-wave:hover>span:nth-child(3){animation-delay:130ms}
+.name-wave:hover>span:nth-child(4){animation-delay:195ms}
+.name-wave:hover>span:nth-child(5){animation-delay:260ms}
+@keyframes name-flight-wave{0%,100%{transform:translateY(0) rotate(0deg) skewX(0deg)}28%{transform:translateY(-.13em) rotate(-5deg) skewX(-3deg)}58%{transform:translateY(.035em) rotate(2deg) skewX(1deg)}78%{transform:translateY(-.045em) rotate(-1deg)}}
+@media(prefers-reduced-motion:reduce){.name-wave:hover>span{animation:none!important}}
+
+
+/* Portfolio 3.0 — cursor-steered aircraft display */
+.hero-visual{touch-action:pan-y;cursor:crosshair}
+.hero-visual:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.hero-plane{left:50%;top:48%;will-change:left,top,transform;transition:filter .25s;text-shadow:0 0 45px rgba(143,198,232,.35)}
+.hero-visual.is-steering .hero-plane{filter:drop-shadow(0 0 18px rgba(143,198,232,.65));color:var(--cyan)}
+.flight-readout{position:absolute;left:24px;top:62px;display:flex;flex-direction:column;gap:4px;font:8px var(--mono);letter-spacing:.12em;color:var(--muted);pointer-events:none}
+.flight-readout strong{font-size:9px;font-weight:400;color:var(--cyan)}
+.flight-hint{position:absolute;right:22px;bottom:23px;font:8px var(--mono);letter-spacing:.1em;color:var(--muted);text-align:right;max-width:160px;pointer-events:none}
+@media(max-width:680px){.flight-readout{top:52px;left:16px}.flight-hint{right:15px;bottom:15px;font-size:7px}.hero-plane{font-size:76px}}
+
+/* Timeline flight marker */
+.timeline{isolation:isolate}
+.timeline-aircraft{position:absolute;z-index:2;left:-12px;top:0;color:var(--cyan);font-size:17px;opacity:0;transform:rotate(90deg);filter:drop-shadow(0 0 8px rgba(143,198,232,.7));pointer-events:none}
+.timeline:hover .timeline-aircraft,.timeline:focus-within .timeline-aircraft{opacity:1;animation:timeline-flight 4.8s cubic-bezier(.35,.05,.55,.95) infinite}
+@keyframes timeline-flight{0%{top:0;transform:translateY(0) rotate(90deg)}100%{top:calc(100% - 24px);transform:translateY(0) rotate(90deg)}}
+@media(prefers-reduced-motion:reduce){.timeline:hover .timeline-aircraft,.timeline:focus-within .timeline-aircraft{animation:none;top:0;opacity:.85}}
